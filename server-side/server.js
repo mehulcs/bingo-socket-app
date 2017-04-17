@@ -52,6 +52,10 @@ io.on('connection', function(socket){
 
     socket.on('resetgame',function(room){
         io.in(room).emit('resetgame',"nothing");
+    });
+
+    socket.on('chatmessage',function(data){
+        socket.broadcast.to(data[0]).emit('chatmessage', data[1]);
     })
     socket.on('disconnect', () => console.log('Client disconnected'));
 });

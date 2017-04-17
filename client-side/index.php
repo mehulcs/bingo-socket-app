@@ -8,11 +8,45 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         </head>
         <style>
+            .message{
+                margin:0;
+            }
+            .message-box{
+                margin-top:7px;
+                clear:both;
+                padding: 2px 10px;
+                margin-left: 5px;
+                background-color:rgba(50, 189, 50, 0.75);
+                color: white;
+                border-radius: 5px;               
+            }
+            .message-box-sender{
+                /* border: 1px solid green; */
+                margin: 0;
+                clear: both;
+                padding: 2px 10px;
+                margin-right: 5px;
+                background: rgb(1, 144, 1);
+                color: white;
+                border-radius: 5px;
+                margin-top:7px;
+            }
+            .chatbox{
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-top: 18px;
+                margin-bottom: 5px;
+                padding-left: 10px;
+                padding-bottom:5px;
+                overflow:auto;
+                height:200px;
+            }
+            
             table,td{
                 border: 2px solid green;
                 text-align: center;
             }
-            td{
+            td,.sendbutton{
                 -webkit-touch-callout: none;
                 -webkit-user-select: none;
                 -khtml-user-select: none;
@@ -33,7 +67,7 @@
                 margin-left:5px;
             }
         </style>
-        <body>
+        <body style="padding:10px 0px;">
         <?php 
             // if(isset($_POST["submit"])){
             //     $name=$_POST['name'];

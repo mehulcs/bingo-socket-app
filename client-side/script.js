@@ -83,3 +83,31 @@ function assignid(){
 function resetgame(){
     socket.emit('resetgame',roomnumber);
 }
+function chatmessage(){
+    var div = document.getElementById('chatbox');
+    var mes=document.getElementById('input-chat').value,data=[];
+    
+    setTimeout(scrolldown,500);
+    if(mes == ""){
+        alert("Please Enter Message");  
+        return false;
+    }else{
+        data[0]=roomnumber;
+        data[1]=mes;
+        socket.emit('chatmessage',data);
+        div.innerHTML = div.innerHTML + '<div class="message-box-sender" style="float:right;"><p class="message">'+mes+'</p></div><br>';
+    }
+    document.getElementById('input-chat').value="";
+}
+socket.on('chatmessage',function(message){
+    
+    document.getElementById('input-chat').value="";
+    var div = document.getElementById('chatbox');
+    div.innerHTML = div.innerHTML + '<div class="message-box" style="float:left;"><p class="message">'+message+'</p></div><br>';
+    setTimeout(scrolldown,500);
+
+});
+function scrolldown(){
+    var div=document.getElementById('chatbox');
+    div.scrollTop = div.scrollHeight;
+}
