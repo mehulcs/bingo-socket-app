@@ -1,5 +1,5 @@
 
-var socket = io("http://192.168.0.103:3000");
+var socket = io("http://192.168.0.100:3000");
 var roomnumber,data=[1111,'a'],arr = [],box=[];
 
 function playarea(){
@@ -17,8 +17,13 @@ function createroom(){
 }
 function joinroom(){
     roomnumber=document.getElementById('input_room').value;
-    socket.emit('joinroom',roomnumber);
-    playarea();
+    if (roomnumber==""){  
+        alert("Please Enter Room Number");  
+        return false;  
+    }else{
+        socket.emit('joinroom',roomnumber);
+        playarea();
+    }
 }
 function sendmessage(boxnumber){
     data[0]=roomnumber;
@@ -41,7 +46,18 @@ socket.on('joinres',function(mes){
         document.getElementById("roomstatus").innerHTML="Room Number "+mes;
     }, 2500);
 });
-
+socket.on('resetgame',function(data){
+    arr=[];
+    getarray();
+    console.log(arr);
+    setTimeout(function(){
+        for(var i=0;i<25;i++){
+            box[i].innerHTML=arr[i];
+            box[i].id=arr[i];
+            box[i].style.backgroundColor="white";
+        }
+    },1500);
+});
 function getarray(){
     
     while(arr.length < 25){
@@ -65,14 +81,5 @@ function assignid(){
     
 }
 function resetgame(){
-    arr=[];
-    getarray();
-    console.log(arr);
-    setTimeout(function(){
-        for(var i=0;i<25;i++){
-            box[i].innerHTML=arr[i];
-            box[i].id=arr[i];
-            box[i].style.backgroundColor="white";
-        }
-    },1500);
+    socket.emit('resetgame',roomnumber);
 }

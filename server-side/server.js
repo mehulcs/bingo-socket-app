@@ -47,8 +47,11 @@ io.on('connection', function(socket){
     });
 
     socket.on('forroommembers',function(data){
-        console.log(data);
         io.in(data[0]).emit('nextinput', data[1]);
     });
+
+    socket.on('resetgame',function(room){
+        io.in(room).emit('resetgame',"nothing");
+    })
     socket.on('disconnect', () => console.log('Client disconnected'));
 });

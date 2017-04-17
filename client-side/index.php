@@ -12,6 +12,14 @@
                 border: 2px solid green;
                 text-align: center;
             }
+            td{
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
             table{
                 border-collapse: collapse;
                 width:100%;
@@ -33,7 +41,7 @@
         ?>
         <?php // if($name != 'mehul' && !isset($_POST['showbox'])){ ?>
             <!--<div class="col-xs-12 col-sm-offset-4 col-sm-4" style="margin-top: 25px;">
-                <form  id="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+                <form  id="form" method="POST" action="<?php //echo $_SERVER["PHP_SELF"]; ?>">
                     <input  class="form-control" type="text" name="name" id="name" placeholder="Enter your name">
                     <br>
                     <input class="btn btn-primary" type="submit" name="submit" value="login">
