@@ -1,5 +1,5 @@
 
-var socket = io("http://192.168.0.100:3000");
+var socket = io("https://hidden-waters-71530.herokuapp.com/");
 var roomnumber,data=[1111,'a'],arr = [],box=[];
 
 function playarea(){
